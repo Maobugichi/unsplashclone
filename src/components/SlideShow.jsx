@@ -10,7 +10,10 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
     const [x,setX] = useState(0);
     const containerRef = useRef(null);
     const [isClick , setIsClick] = useState(false);
-    const [xValue, setXValue] = useState(40)
+    const [xValue, setXValue] = useState({
+        x:40,
+        scrollLeft:380
+    })
     const slide = fetchAnswer &&  fetchAnswer
     .slice(0,8).map((item, index) => ({ item, index }))
     .sort((a, b) => Math.abs(a.index - currentIndex) - Math.abs(b.index - currentIndex))
@@ -47,7 +50,10 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
 
     useEffect(() => {
         if (width <= 500) {
-            setXValue(30)
+            setXValue({
+                x:30,
+                scrollLeft:360
+            })
         }
     },[width])
 
@@ -70,14 +76,14 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
     },[scrollLeft])
 
     function handleScroll() {
-        setX(prev => prev - xValue)
-        setScrollLeft(prev => prev + 360)
+        setX(prev => prev - xValue.x)
+        setScrollLeft(prev => prev + xValue.scrollLeft)
         setIsClick(true)
     }
 
     function handleScrollRight() {
-        setX(prev => prev + xValue)
-        setScrollLeft(prev => prev - 380)
+        setX(prev => prev + xValue.x)
+        setScrollLeft(prev => prev - xValue.scrollLeft)
         setIsClick(true)
     }
     const variants = {
