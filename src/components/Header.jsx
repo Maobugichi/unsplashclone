@@ -7,8 +7,6 @@ const Header = ({fetchAnswer,setSearchParam}) => {
     const [inputValue, setInputValue] = useState('');
     const [debouncedValue, setDebouncedValue] = useState(null)
     const [isLoading, setIsLoading] = useState(false);
-
-    
     const handleChange = useCallback((e) => {
         setInputValue(e.target.value);
        

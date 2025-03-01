@@ -10,14 +10,16 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
     const [x,setX] = useState(0);
     const containerRef = useRef(null);
     const [isClick , setIsClick] = useState(false);
-    const [xValue, setXValue] = useState({
-        x:40,
-        scrollLeft:380
-    })
+    const [xValue, setXValue] = useState({})
     const slide = fetchAnswer &&  fetchAnswer
     .slice(0,8).map((item, index) => ({ item, index }))
     .sort((a, b) => Math.abs(a.index - currentIndex) - Math.abs(b.index - currentIndex))
     .map(({ item, index }) => (
+    <motion.div
+    key={item.id}
+    className="w-full h-[500px] flex-shrink-0"
+    >
+  
       <Modal
         key={item.id}
         id={item.id}
@@ -30,6 +32,7 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
         x={x}
        
       />
+      </motion.div>
     ))
 
     const debounceHandleScroll = _.debounce((e) => {
@@ -49,16 +52,24 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
     },[isClick])
 
     useEffect(() => {
-        if (width <= 500) {
+        const slideContainerWidth = containerRef.current.offsetWidth;
+        const slideWidth = slideContainerWidth / 8;
+        if (width <= 550) {
             setXValue({
-                x:30,
-                scrollLeft:360
-            })
+                x: 30,
+                scrollLeft: slideWidth * 8.2,
+            });
+        } else {
+            setXValue({
+                x: 30,
+                scrollLeft: slideWidth * 8.3,
+            });
         }
-    },[width])
+        
+    },[width,isShow])
 
     useEffect(() => {
-        if (scrollLeft > 2660 && x < -280) {
+        if (scrollLeft > 2660 && x < -210) {
             setScrollLeft(0)
             setX(0)
         } else if (scrollLeft < -200 && x >  20) {
@@ -72,7 +83,6 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
 
         console.log(scrollLeft)
         console.log(x)
-
     },[scrollLeft])
 
     function handleScroll() {
@@ -103,7 +113,7 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
          initial="hidden"
          animate={isShow ? "visible" : "hidden"}
          exit="hidden"
-         className={`fixed ${isShow ? "block" : "hidden"} z-50 w-full  h-auto min-h-[100vh] bg-[rgba(51,51,51,0.2)] top-0 flex`}>
+         className={`fixed ${isShow ? "block" : "hidden"} z-50 w-full   h-auto min-h-[100vh] bg-[rgba(51,51,51,0.2)] top-0 flex`}>
             <Exit
              setShow={setShow}
             />
@@ -118,7 +128,7 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
              style={{
                 overflowX:'scroll',
                 scrollSnapType:"x mandatory"
-             }} className="lg:w-[30%] w-[90%] flex mx-auto h-full relative lg:top-[10px] top-[80px] slide-container gap-10">
+             }} className="lg:w-[30%] md:w-[55%] w-[95%] flex mx-auto h-full relative lg:top-[10px] top-[80px] slide-container gap-10 scrollbar-hide">
                 
               {slide} 
              </motion.div>

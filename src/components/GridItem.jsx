@@ -5,8 +5,6 @@ import { useEffect, useState } from "react";
 
 const GridItem = ({id,src,alt,username,location,height,setItemDetails,onClick,style,width,setWidth}) => {
    const [isStyle,setIsStyle] = useState(style)
-   
-
    useEffect(() => {
      const handleResize = () => {
        setWidth(window.innerWidth)

@@ -23,7 +23,7 @@ const Modal = ({src,alt,id,itemDetails,fetchAnswer,setN,x,onClick}) => {
              ref={slideRef}
              variants={modalVariant}
              delay={0.1}
-             className="slide w-[800px]  rounded-2xl "
+             className="slide w-[90%] mx-auto h-full  rounded-2xl "
              animate={{x}}
              src={src} alt={alt} 
              />
