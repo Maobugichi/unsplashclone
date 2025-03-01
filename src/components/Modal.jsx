@@ -6,7 +6,6 @@ const Modal = ({src,alt,id,itemDetails,fetchAnswer,setN,x,onClick}) => {
     useEffect(() => {
         const index = fetchAnswer.findIndex(item => item.id == itemDetails)
         const slides = Array.from(document.querySelectorAll(".slide"));
-        console.log(itemDetails)
         if (slides[index]) {
             slides[index].classList.remove("hidden")
             slides[0].src = fetchAnswer[index].urls.raw

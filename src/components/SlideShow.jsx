@@ -54,12 +54,19 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
     useEffect(() => {
         const slideContainerWidth = containerRef.current.offsetWidth;
         const slideWidth = slideContainerWidth / 8;
-        if (width < 800) {
+        if (width < 700) {
             setXValue({
                 x: 30,
                 scrollLeft: slideWidth * 8.2,
             });
-        } else  {
+        } else if (width > 700 && width <= 780) {
+            setXValue({
+                x: 30,
+                scrollLeft: slideWidth * 8.1,
+            });
+        }
+        
+        else  {
             setXValue({
                 x: 30,
                 scrollLeft: slideWidth * 8.3,
@@ -125,7 +132,7 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
              style={{
                 overflowX:'scroll',
                 scrollSnapType:"x mandatory"
-             }} className="lg:w-[30%] md:w-[55%] w-[95%] flex mx-auto h-full relative lg:top-[10px] top-[80px] slide-container gap-10 scrollbar-hide">
+             }} className=" lg:w-[55%] w-[95%] flex mx-auto h-full relative lg:top-[300px] top-[80px] slide-container gap-10 scrollbar-hide new">
                 
               {slide} 
              </motion.div>

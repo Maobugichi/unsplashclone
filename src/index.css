@@ -9,7 +9,15 @@
     display: none;
   }
 
- 
+  @media (min-width: 1280px) {
+    .new {
+      width: 30%;
+      top:60px
+    }
+  }
+  
+  
+  
 
   
   
