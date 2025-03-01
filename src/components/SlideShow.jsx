@@ -71,7 +71,7 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
 
     function handleScroll() {
         setX(prev => prev - xValue)
-        setScrollLeft(prev => prev + 350)
+        setScrollLeft(prev => prev + 360)
         setIsClick(true)
     }
 
