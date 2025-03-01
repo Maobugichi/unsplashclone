@@ -71,7 +71,7 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
 
     function handleScroll() {
         setX(prev => prev - xValue)
-        setScrollLeft(prev => prev + 380)
+        setScrollLeft(prev => prev + 300)
         setIsClick(true)
     }
 
@@ -83,7 +83,6 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
     const variants = {
         visible: { scale:1,opacity: 1,transition: {
             when: "beforeChildren",
-           
           }, },
         hidden: { scale:0,opacity: 0, transition: {
             when: "afterChildren",
@@ -104,7 +103,7 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
             />
             <SlideBtn
              handleScroll={handleScroll}
-             className="absolute lg:left-[200px] left-32 lg:top-[300px] top-[600px]"
+             className="absolute lg:left-[200px] left-32 lg:top-[300px] top-[630px]"
              d="M15.287 18.693A.75.75 0 0 0 15.75 18V6a.75.75 0 0 0-1.28-.53l-6 6a.75.75 0 0 0 0 1.06l6 6a.75.75 0 0 0 .817.163"
             />
              <motion.div 
@@ -119,7 +118,7 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
              </motion.div>
              <SlideBtn
              handleScroll={handleScrollRight}
-             className="absolute right-32 lg:right-[200px] lg:top-[300px] top-[600px]"
+             className="absolute right-32 lg:right-[200px] lg:top-[300px] top-[630px]"
              d="M8.713 18.693A.75.75 0 0 1 8.25 18V6a.75.75 0 0 1 1.28-.53l6 6a.75.75 0 0 1 0 1.06l-6 6a.75.75 0 0 1-.817.163"
             />
                  
