@@ -54,12 +54,12 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
     useEffect(() => {
         const slideContainerWidth = containerRef.current.offsetWidth;
         const slideWidth = slideContainerWidth / 8;
-        if (width <= 550) {
+        if (width < 800) {
             setXValue({
                 x: 30,
                 scrollLeft: slideWidth * 8.2,
             });
-        } else {
+        } else  {
             setXValue({
                 x: 30,
                 scrollLeft: slideWidth * 8.3,
@@ -80,9 +80,6 @@ const SlideShow = ({fetchAnswer,itemDetails,setShow,setN,scrollLeft,setScrollLef
             left:scrollLeft,
             behaviour:"smooth"
         })
-
-        console.log(scrollLeft)
-        console.log(x)
     },[scrollLeft])
 
     function handleScroll() {
