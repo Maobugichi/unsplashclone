@@ -10,7 +10,6 @@ function App() {
   const [searchParam,setSearchParam] = useState('Africa')
   const apiURL = import.meta.env.VITE_API_URL;
   const apiKey = import.meta.env.VITE_API_KEY;
-  https://api.unsplash.com/search/photos?query=Africa
   
   useEffect(() => {
     axios.get(`${apiURL}`, {
